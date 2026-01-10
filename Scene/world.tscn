@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://dbpb11ikj2xfu"]
+[gd_scene load_steps=8 format=4 uid="uid://dbpb11ikj2xfu"]
 
 [ext_resource type="Texture2D" uid="uid://cgwx8ta70ngcs" path="res://Assets/Terrain/land.png" id="1_emx41"]
 [ext_resource type="PackedScene" uid="uid://dg5tgildmyl0p" path="res://Assets/Player/player.tscn" id="3_ejll3"]
 [ext_resource type="PackedScene" uid="uid://76mrfgq0t3ns" path="res://Scripts/Enemy/Spawner/EnemySpawner.tscn" id="3_scul4"]
+[ext_resource type="PackedScene" uid="uid://dt6ovwcmuuk64" path="res://UI/WaveNotificationUI.tscn" id="5_37axr"]
 [ext_resource type="PackedScene" uid="uid://w8ccwrkc6lga" path="res://Assets/Player/PlayerUI.tscn" id="5_pcvp0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dlwip"]
@@ -31,3 +32,6 @@ position = Vector2(21, 316)
 
 [node name="PlayerUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_pcvp0")]
 player = NodePath("../Player")
+
+[node name="WaveNotificationUI" parent="." node_paths=PackedStringArray("spawner") instance=ExtResource("5_37axr")]
+spawner = NodePath("../EnemySpawner")
