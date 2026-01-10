@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbpb11ikj2xfu"]
+[gd_scene load_steps=7 format=3 uid="uid://dbpb11ikj2xfu"]
 
 [ext_resource type="Texture2D" uid="uid://ctbrkxpyxfa6l" path="res://Assets/Terrain/dirtandgrass.png" id="1_emx41"]
 [ext_resource type="PackedScene" uid="uid://dg5tgildmyl0p" path="res://Assets/Player/player.tscn" id="3_ejll3"]
 [ext_resource type="Script" uid="uid://cfpdp5lgjg7x0" path="res://Scripts/Enemy/Spawner/EnemySpawner.gd" id="4_pcvp0"]
 [ext_resource type="Resource" uid="uid://doqfseeby5rwt" path="res://Scripts/Enemy/Spawner/Spawner Schedules/World1/Sched_World_01.tres" id="5_37axr"]
+[ext_resource type="PackedScene" uid="uid://w8ccwrkc6lga" path="res://Assets/Player/PlayerUI.tscn" id="5_pcvp0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejll3"]
 size = Vector2(1207, 20)
@@ -37,7 +38,7 @@ position = Vector2(0.5, 101)
 shape = SubResource("RectangleShape2D_ejll3")
 
 [node name="Player" parent="." instance=ExtResource("3_ejll3")]
-position = Vector2(-527, -64)
+position = Vector2(-530, 47)
 
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawn_points", "spawn_parent")]
 script = ExtResource("4_pcvp0")
@@ -49,3 +50,6 @@ spawn_parent = NodePath("Enemies")
 position = Vector2(536, 69)
 
 [node name="Enemies" type="Node2D" parent="EnemySpawner"]
+
+[node name="PlayerUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_pcvp0")]
+player = NodePath("../Player")

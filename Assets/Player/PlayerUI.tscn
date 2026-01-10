@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://w8ccwrkc6lga"]
+
+[ext_resource type="Script" uid="uid://coblu1qhfgtcg" path="res://Scripts/Player/PlayerUI.gd" id="1_qpci1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bh77a"]
+bg_color = Color(0.83423626, 0.012552235, 7.70092e-07, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="PlayerUI" type="CanvasLayer"]
+script = ExtResource("1_qpci1")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" type="ProgressBar" parent="Root"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 27.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_bh77a")
+value = 100.0
