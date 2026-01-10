@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1infh0or0k8h"]
+
+[ext_resource type="Script" uid="uid://cwc78daoum1j4" path="res://Scripts/Enemy/Enemy.gd" id="1_5guow"]
+[ext_resource type="Script" uid="uid://mrcf6d7pq4of" path="res://Scripts/Enemy/EnemyMovement.gd" id="1_yjjeo"]
+[ext_resource type="Script" uid="uid://cj7ui062ybsom" path="res://Scripts/Enemy/EnemyHealth.gd" id="2_kvm4v"]
+
+[node name="EnemyTemplate" type="CharacterBody2D"]
+script = ExtResource("1_5guow")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies"]]
+
+[node name="EnemyHealth" type="Node2D" parent="."]
+script = ExtResource("2_kvm4v")
+
+[node name="EnemyMovement" type="CharacterBody2D" parent="."]
+script = ExtResource("1_yjjeo")
+metadata/_custom_type_script = "uid://mrcf6d7pq4of"

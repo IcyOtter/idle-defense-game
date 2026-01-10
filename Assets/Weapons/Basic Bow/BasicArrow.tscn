@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdbsoh65qg2m8"]
+
+[ext_resource type="Script" uid="uid://d07h1dlq46qq1" path="res://Scripts/Weapon/Projectile.gd" id="1_ut7g6"]
+[ext_resource type="Texture2D" uid="uid://cu5rwd6kh5dgi" path="res://Assets/Weapons/Basic Bow/wepStoneArrow.png" id="2_upm7c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_30n28"]
+radius = 4.0
+
+[node name="BasicArrow" type="Area2D"]
+collision_mask = 5
+script = ExtResource("1_ut7g6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_upm7c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(19, 0)
+shape = SubResource("CircleShape2D_30n28")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

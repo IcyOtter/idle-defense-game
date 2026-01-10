@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbpb11ikj2xfu"]
+
+[ext_resource type="Texture2D" uid="uid://ctbrkxpyxfa6l" path="res://Assets/Terrain/dirtandgrass.png" id="1_emx41"]
+[ext_resource type="PackedScene" uid="uid://blgx3oqcm6m2t" path="res://Assets/Enemies/Green Slime/GreenSlime.tscn" id="2_dlwip"]
+[ext_resource type="PackedScene" uid="uid://dg5tgildmyl0p" path="res://Assets/Player/player.tscn" id="3_ejll3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejll3"]
+size = Vector2(1207, 20)
+
+[node name="World" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Ground" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+position = Vector2(1.5, 144.5)
+scale = Vector2(18.359375, 5.515625)
+texture = ExtResource("1_emx41")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(0.5, 101)
+shape = SubResource("RectangleShape2D_ejll3")
+
+[node name="GreenSlime" parent="." instance=ExtResource("2_dlwip")]
+position = Vector2(409, 51)
+
+[node name="Player" parent="." instance=ExtResource("3_ejll3")]
+position = Vector2(-535, 50)
