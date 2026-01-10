@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="SpawnerSchedule" load_steps=4 format=3 uid="uid://doqfseeby5rwt"]
+[gd_resource type="Resource" script_class="SpawnerSchedule" load_steps=5 format=3 uid="uid://doqfseeby5rwt"]
 
-[ext_resource type="Script" uid="uid://ccf34efscwcbn" path="res://Scripts/Enemy/Spawner/SpawnerSchedule.gd" id="1_feaid"]
-[ext_resource type="Script" uid="uid://cq10vpcmrceij" path="res://Scripts/Enemy/Spawner/WaveData.gd" id="2_ay7cp"]
-[ext_resource type="Resource" uid="uid://bsa8cvvoar6xx" path="res://Scripts/Enemy/Spawner/Spawner Schedules/World1/Waves/Wave_01/Wave_01.tres" id="3_7npje"]
+[ext_resource type="Script" uid="uid://ccf34efscwcbn" path="res://Scripts/Enemy/Spawner/SpawnerSchedule.gd" id="1_hmbb0"]
+[ext_resource type="Script" uid="uid://cq10vpcmrceij" path="res://Scripts/Enemy/Spawner/WaveData.gd" id="2_jgkr2"]
+[ext_resource type="Resource" uid="uid://bsa8cvvoar6xx" path="res://Scripts/Enemy/Spawner/Spawner Schedules/World1/Waves/Wave_01/Wave_01.tres" id="3_usgnb"]
+[ext_resource type="Resource" uid="uid://c8l7udva2j0ck" path="res://Scripts/Enemy/Spawner/Spawner Schedules/World1/Waves/Wave_02/Wave_02.tres" id="4_xnr4u"]
 
 [resource]
-script = ExtResource("1_feaid")
-waves = Array[ExtResource("2_ay7cp")]([ExtResource("3_7npje")])
+script = ExtResource("1_hmbb0")
+waves = Array[ExtResource("2_jgkr2")]([ExtResource("3_usgnb"), ExtResource("4_xnr4u")])
 metadata/_custom_type_script = "uid://ccf34efscwcbn"
