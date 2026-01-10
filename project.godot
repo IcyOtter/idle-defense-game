@@ -15,10 +15,6 @@ run/main_scene="uid://dbpb11ikj2xfu"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
-[global_group]
-
-enemies=""
-
 [input]
 
 attack={
@@ -37,3 +33,6 @@ toggle_auto_fire={
 2d_render/layer_1="World"
 2d_render/layer_2="Player"
 2d_render/layer_3="Enemies"
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Enemy"
+2d_physics/layer_3="World"

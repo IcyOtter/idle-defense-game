@@ -1,36 +1,56 @@
-[gd_scene load_steps=6 format=3 uid="uid://dg5tgildmyl0p"]
+[gd_scene load_steps=9 format=3 uid="uid://dg5tgildmyl0p"]
 
+[ext_resource type="Script" uid="uid://bj56idca2yvmg" path="res://Scripts/Player/Player.gd" id="1_5j20w"]
 [ext_resource type="Script" uid="uid://blmciaa5ipojl" path="res://Scripts/Player/PlayerCombat.gd" id="1_8ft5u"]
 [ext_resource type="Texture2D" uid="uid://bkx73bx7m1xnb" path="res://Assets/Player/pixelplayer.png" id="1_61lih"]
 [ext_resource type="PackedScene" uid="uid://bbh8ja5kplm76" path="res://Assets/Weapons/Basic Bow/BasicBow.tscn" id="2_5jfoa"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ft5u"]
-size = Vector2(1167, 398)
+[ext_resource type="Script" uid="uid://tedg5l22oe0b" path="res://Scripts/Player/PlayerHealth.gd" id="5_aqk3a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqk3a"]
 radius = 17.0
 height = 52.0
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_layer = 7
-collision_mask = 7
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ft5u"]
+size = Vector2(1167, 398)
 
-[node name="PlayerCombat" type="Node2D" parent="." node_paths=PackedStringArray("weapon", "targeting_area")]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ft5u"]
+radius = 17.0
+height = 52.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 2
+script = ExtResource("1_5j20w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_aqk3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_61lih")
+
+[node name="PlayerCombat" type="Node2D" parent="." node_paths=PackedStringArray("weapon", "targeting_area", "player")]
 script = ExtResource("1_8ft5u")
 weapon = NodePath("../BasicBow")
 targeting_area = NodePath("../TargetingArea")
+player = NodePath("..")
 
 [node name="BasicBow" parent="." instance=ExtResource("2_5jfoa")]
 position = Vector2(26, 0)
 
 [node name="TargetingArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetingArea"]
 position = Vector2(573.5, -189)
 shape = SubResource("RectangleShape2D_8ft5u")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_61lih")
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_aqk3a")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape2D_8ft5u")
+
+[node name="PlayerHealth" type="Node" parent="."]
+script = ExtResource("5_aqk3a")
+max_health = 10

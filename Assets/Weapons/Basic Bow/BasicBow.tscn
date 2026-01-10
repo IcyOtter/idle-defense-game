@@ -8,7 +8,6 @@
 script = ExtResource("1_6rxey")
 fire_point = NodePath("FirePoint")
 weapon_data = ExtResource("2_jf831")
-local_offset = Vector2(20, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_56syd")

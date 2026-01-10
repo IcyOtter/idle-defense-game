@@ -5,11 +5,16 @@ class_name Enemy
 
 @onready var health: EnemyHealth = $EnemyHealth
 
+@onready var damage_dealer: EnemyDamageDealer = $EnemyDamageDealer
+
 func _ready() -> void:
 	# Ensure the health component uses the same stats resource
 	if health != null:
 		health.stats = stats
 		health.died.connect(_on_died)
+
+	if damage_dealer != null:
+		damage_dealer.enemy_data = stats
 
 func take_damage(amount: int) -> void:
 	if health != null:

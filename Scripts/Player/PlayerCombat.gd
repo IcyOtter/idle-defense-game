@@ -6,12 +6,15 @@ class_name PlayerCombat
 
 var auto_fire := false
 var enemies_in_range: Array[Node2D] = []
+@export var player: Player
 
 func _ready() -> void:
 	targeting_area.body_entered.connect(_on_enemy_entered)
 	targeting_area.body_exited.connect(_on_enemy_exited)
 
 func _process(_delta: float) -> void:
+	if player == null or player.is_dead:
+		return
 	if weapon == null:
 		return
 
@@ -24,8 +27,10 @@ func _process(_delta: float) -> void:
 	if auto_fire:
 		weapon.fire(target.global_position)
 
-
 func _input(event: InputEvent) -> void:
+	if player == null or player.is_dead:
+		return
+
 	if event.is_action_pressed("attack"):
 		var target := _get_nearest_enemy()
 		if target:
@@ -33,6 +38,7 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("toggle_auto_fire"):
 		auto_fire = not auto_fire
+
 
 func _get_nearest_enemy() -> Node2D:
 	var nearest: Node2D = null
@@ -52,6 +58,7 @@ func _get_nearest_enemy() -> Node2D:
 func _on_enemy_entered(body: Node) -> void:
 	if body.is_in_group("enemies"):
 		enemies_in_range.append(body)
+
 
 func _on_enemy_exited(body: Node) -> void:
 	enemies_in_range.erase(body)
