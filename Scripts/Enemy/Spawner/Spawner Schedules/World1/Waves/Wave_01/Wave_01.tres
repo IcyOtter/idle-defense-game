@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=5 format=3 uid="uid://bsa8cvvoar6xx"]
+
+[ext_resource type="Script" uid="uid://cjdjrnrb11vnb" path="res://Scripts/Enemy/Spawner/EnemySpawnerEntry.gd" id="1_ga813"]
+[ext_resource type="Resource" uid="uid://cb3lhfj1nmytr" path="res://Scripts/Enemy/Spawner/Spawner Schedules/World1/Waves/Wave_01/01_GreenSlime.tres" id="2_6064k"]
+[ext_resource type="Resource" uid="uid://bfp40cto1erp4" path="res://Scripts/Enemy/Spawner/Spawner Schedules/World1/Waves/Wave_01/02_enem_GreenSlime.tres" id="3_a3l61"]
+[ext_resource type="Script" uid="uid://cq10vpcmrceij" path="res://Scripts/Enemy/Spawner/WaveData.gd" id="4_opt72"]
+
+[resource]
+script = ExtResource("4_opt72")
+entries = Array[ExtResource("1_ga813")]([ExtResource("2_6064k"), ExtResource("3_a3l61")])
+spawn_interval = 2.0
+metadata/_custom_type_script = "uid://cq10vpcmrceij"

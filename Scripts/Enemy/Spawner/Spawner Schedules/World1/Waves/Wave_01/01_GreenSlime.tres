@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemySpawnEntry" load_steps=3 format=3 uid="uid://cb3lhfj1nmytr"]
+
+[ext_resource type="Script" uid="uid://cjdjrnrb11vnb" path="res://Scripts/Enemy/Spawner/EnemySpawnerEntry.gd" id="1_apo66"]
+[ext_resource type="PackedScene" uid="uid://blgx3oqcm6m2t" path="res://Assets/Enemies/Green Slime/GreenSlime.tscn" id="1_qcnsd"]
+
+[resource]
+script = ExtResource("1_apo66")
+enemy_scene = ExtResource("1_qcnsd")
+count = 10
+metadata/_custom_type_script = "uid://cjdjrnrb11vnb"

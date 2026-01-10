@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbpb11ikj2xfu"]
+[gd_scene load_steps=6 format=3 uid="uid://dbpb11ikj2xfu"]
 
 [ext_resource type="Texture2D" uid="uid://ctbrkxpyxfa6l" path="res://Assets/Terrain/dirtandgrass.png" id="1_emx41"]
-[ext_resource type="PackedScene" uid="uid://blgx3oqcm6m2t" path="res://Assets/Enemies/Green Slime/GreenSlime.tscn" id="2_dlwip"]
 [ext_resource type="PackedScene" uid="uid://dg5tgildmyl0p" path="res://Assets/Player/player.tscn" id="3_ejll3"]
+[ext_resource type="Script" uid="uid://cfpdp5lgjg7x0" path="res://Scripts/Enemy/Spawner/EnemySpawner.gd" id="4_pcvp0"]
+[ext_resource type="Resource" uid="uid://doqfseeby5rwt" path="res://Scripts/Enemy/Spawner/Spawner Schedules/World1/Sched_World_01.tres" id="5_37axr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejll3"]
 size = Vector2(1207, 20)
@@ -35,8 +36,16 @@ texture = ExtResource("1_emx41")
 position = Vector2(0.5, 101)
 shape = SubResource("RectangleShape2D_ejll3")
 
-[node name="GreenSlime" parent="." instance=ExtResource("2_dlwip")]
-position = Vector2(-118, 54)
-
 [node name="Player" parent="." instance=ExtResource("3_ejll3")]
 position = Vector2(-535, 50)
+
+[node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawn_points", "spawn_parent")]
+script = ExtResource("4_pcvp0")
+schedule = ExtResource("5_37axr")
+spawn_points = [NodePath("SpawnPoint1")]
+spawn_parent = NodePath("Enemies")
+
+[node name="SpawnPoint1" type="Node2D" parent="EnemySpawner"]
+position = Vector2(536, 69)
+
+[node name="Enemies" type="Node2D" parent="EnemySpawner"]
