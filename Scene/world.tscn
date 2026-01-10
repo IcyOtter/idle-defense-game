@@ -37,7 +37,7 @@ position = Vector2(0.5, 101)
 shape = SubResource("RectangleShape2D_ejll3")
 
 [node name="Player" parent="." instance=ExtResource("3_ejll3")]
-position = Vector2(-535, 50)
+position = Vector2(-527, -64)
 
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawn_points", "spawn_parent")]
 script = ExtResource("4_pcvp0")

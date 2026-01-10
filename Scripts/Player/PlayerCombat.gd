@@ -25,7 +25,10 @@ func _process(_delta: float) -> void:
 	weapon.aim_at(target.global_position)
 
 	if auto_fire:
-		weapon.fire(target.global_position)
+		if weapon is BowWeapon:
+			(weapon as BowWeapon).fire_at_target(target)
+		else:
+			weapon.fire(target.global_position)
 
 func _input(event: InputEvent) -> void:
 	if player == null or player.is_dead:
@@ -34,7 +37,10 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
 		var target := _get_nearest_enemy()
 		if target:
-			weapon.fire(target.global_position)
+			if weapon is BowWeapon:
+				(weapon as BowWeapon).fire_at_target(target)
+			else:
+				weapon.fire(target.global_position)
 
 	if event.is_action_pressed("toggle_auto_fire"):
 		auto_fire = not auto_fire
