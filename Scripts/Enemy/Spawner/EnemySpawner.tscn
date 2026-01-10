@@ -10,6 +10,6 @@ spawn_points = [NodePath("SpawnPoint1")]
 spawn_parent = NodePath("Enemies")
 
 [node name="SpawnPoint1" type="Node2D" parent="."]
-position = Vector2(536, 69)
+position = Vector2(1053, 208)
 
 [node name="Enemies" type="Node2D" parent="."]

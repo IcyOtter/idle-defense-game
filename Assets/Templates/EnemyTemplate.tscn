@@ -1,15 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bulfvit2phj4r"]
+[gd_scene load_steps=5 format=3 uid="uid://bulfvit2phj4r"]
 
 [ext_resource type="Script" uid="uid://cwc78daoum1j4" path="res://Scripts/Enemy/Enemy.gd" id="1_bteoa"]
-[ext_resource type="Resource" uid="uid://c4ep3r3nb022e" path="res://Assets/Enemies/Green Slime/edGreenSlime.tres" id="2_on3w3"]
 [ext_resource type="Script" uid="uid://cj7ui062ybsom" path="res://Scripts/Enemy/EnemyHealth.gd" id="4_ld7po"]
-[ext_resource type="Script" uid="uid://mrcf6d7pq4of" path="res://Scripts/Enemy/EnemyMovement.gd" id="5_evx0q"]
+[ext_resource type="Script" uid="uid://bm2vyewadjwm0" path="res://Scripts/Enemy/EnemyHealthBar.gd" id="4_uqf0f"]
 [ext_resource type="Script" uid="uid://br822xbn2vbe8" path="res://Scripts/Enemy/EnemyDamageDealer.gd" id="6_0sa5b"]
 
 [node name="EnemyTemplate" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
 script = ExtResource("1_bteoa")
-stats = ExtResource("2_on3w3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
@@ -19,10 +17,11 @@ position = Vector2(-0.5, 4.5)
 [node name="EnemyHealth" type="Node2D" parent="."]
 script = ExtResource("4_ld7po")
 
-[node name="EnemyMovement" type="Node2D" parent="."]
-script = ExtResource("5_evx0q")
-
 [node name="EnemyDamageDealer" type="Area2D" parent="." groups=["enemies"]]
 script = ExtResource("6_0sa5b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDamageDealer"]
+
+[node name="EnemyHealthBar" type="Node2D" parent="."]
+position = Vector2(0, -26)
+script = ExtResource("4_uqf0f")

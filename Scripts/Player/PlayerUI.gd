@@ -4,6 +4,7 @@ class_name PlayerUI
 @export var player: Player
 
 @onready var health_bar: ProgressBar = $Root/HealthBar
+@onready var HealthTotalDisplay: Label = $Root/HealthBar/HealthTotalDisplay
 
 func _ready() -> void:
 	if player == null:
@@ -21,3 +22,4 @@ func _ready() -> void:
 func _on_player_health_changed(current: int, max_health: int) -> void:
 	health_bar.max_value = max_health
 	health_bar.value = current
+	HealthTotalDisplay.text = str(current, " / ", max_health)
