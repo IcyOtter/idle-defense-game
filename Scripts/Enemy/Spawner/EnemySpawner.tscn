@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://76mrfgq0t3ns"]
+
+[ext_resource type="Script" uid="uid://cfpdp5lgjg7x0" path="res://Scripts/Enemy/Spawner/EnemySpawner.gd" id="1_nriie"]
+[ext_resource type="Resource" uid="uid://doqfseeby5rwt" path="res://Scripts/Enemy/Spawner/Spawner Schedules/World1/Sched_World_01.tres" id="2_tgrcd"]
+
+[node name="EnemySpawner" type="Node2D" node_paths=PackedStringArray("spawn_points", "spawn_parent")]
+script = ExtResource("1_nriie")
+schedule = ExtResource("2_tgrcd")
+spawn_points = [NodePath("SpawnPoint1")]
+spawn_parent = NodePath("Enemies")
+
+[node name="SpawnPoint1" type="Node2D" parent="."]
+position = Vector2(536, 69)
+
+[node name="Enemies" type="Node2D" parent="."]
