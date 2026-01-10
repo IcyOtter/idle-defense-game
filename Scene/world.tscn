@@ -13,6 +13,19 @@ size = Vector2(1207, 20)
 
 [node name="Ground" type="CharacterBody2D" parent="."]
 
+[node name="Background" type="ColorRect" parent="Ground"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -586.0
+offset_top = -339.0
+offset_right = 588.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.36078432, 0.5803922, 1, 1)
+
 [node name="Sprite2D" type="Sprite2D" parent="Ground"]
 position = Vector2(1.5, 144.5)
 scale = Vector2(18.359375, 5.515625)
@@ -23,7 +36,7 @@ position = Vector2(0.5, 101)
 shape = SubResource("RectangleShape2D_ejll3")
 
 [node name="GreenSlime" parent="." instance=ExtResource("2_dlwip")]
-position = Vector2(409, 51)
+position = Vector2(-423, 50)
 
 [node name="Player" parent="." instance=ExtResource("3_ejll3")]
 position = Vector2(-535, 50)

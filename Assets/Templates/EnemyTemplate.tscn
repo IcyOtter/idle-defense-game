@@ -14,6 +14,5 @@ script = ExtResource("1_5guow")
 [node name="EnemyHealth" type="Node2D" parent="."]
 script = ExtResource("2_kvm4v")
 
-[node name="EnemyMovement" type="CharacterBody2D" parent="."]
+[node name="EnemyMovement" type="Node2D" parent="."]
 script = ExtResource("1_yjjeo")
-metadata/_custom_type_script = "uid://mrcf6d7pq4of"

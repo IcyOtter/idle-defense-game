@@ -19,10 +19,11 @@ func _process(_delta: float) -> void:
 	if target == null:
 		return
 
-	weapon.aim_at(target.global_position, global_position)
+	weapon.aim_at(target.global_position)
 
 	if auto_fire:
 		weapon.fire(target.global_position)
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):

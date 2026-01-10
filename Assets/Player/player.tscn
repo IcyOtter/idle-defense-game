@@ -4,29 +4,33 @@
 [ext_resource type="Texture2D" uid="uid://bkx73bx7m1xnb" path="res://Assets/Player/pixelplayer.png" id="1_61lih"]
 [ext_resource type="PackedScene" uid="uid://bbh8ja5kplm76" path="res://Assets/Weapons/Basic Bow/BasicBow.tscn" id="2_5jfoa"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5j20w"]
-radius = 1534.3993
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ft5u"]
+size = Vector2(1167, 398)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6miq6"]
-height = 56.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqk3a"]
+radius = 17.0
+height = 52.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "targeting_area")]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 7
+collision_mask = 7
+
+[node name="PlayerCombat" type="Node2D" parent="." node_paths=PackedStringArray("weapon", "targeting_area")]
 script = ExtResource("1_8ft5u")
-weapon = NodePath("BasicBow")
-targeting_area = NodePath("TargetingArea")
+weapon = NodePath("../BasicBow")
+targeting_area = NodePath("../TargetingArea")
 
 [node name="BasicBow" parent="." instance=ExtResource("2_5jfoa")]
-position = Vector2(25, 0)
+position = Vector2(26, 0)
 
 [node name="TargetingArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetingArea"]
-shape = SubResource("CircleShape2D_5j20w")
+position = Vector2(573.5, -189)
+shape = SubResource("RectangleShape2D_8ft5u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_61lih")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
-shape = SubResource("CapsuleShape2D_6miq6")
+shape = SubResource("CapsuleShape2D_aqk3a")
