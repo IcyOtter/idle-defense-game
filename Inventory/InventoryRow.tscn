@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://c1xmaw0uhlifq"]
+
+[node name="InventoryRow" type="Button"]
+size_flags_horizontal = 3

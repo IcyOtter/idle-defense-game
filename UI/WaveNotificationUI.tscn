@@ -4,6 +4,7 @@
 
 [node name="WaveNotificationUI" type="CanvasLayer"]
 script = ExtResource("1_75rkw")
+display_seconds = 5.0
 
 [node name="Root" type="Control" parent="."]
 layout_mode = 3

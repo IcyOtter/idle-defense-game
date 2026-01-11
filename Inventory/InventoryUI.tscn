@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx1tns45anbve"]
+
+[ext_resource type="Script" uid="uid://0ianbnd0nqoa" path="res://Inventory/InventoryUI.gd" id="1_jgibs"]
+[ext_resource type="PackedScene" uid="uid://c1xmaw0uhlifq" path="res://Inventory/InventoryRow.tscn" id="2_jgibs"]
+
+[node name="InventoryUI" type="CanvasLayer"]
+script = ExtResource("1_jgibs")
+row_scene = ExtResource("2_jgibs")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Window" type="Panel" parent="Root"]
+layout_mode = 0
+offset_right = 201.0
+offset_bottom = 500.0
+
+[node name="Title" type="Label" parent="Root/Window"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Inventory"
+
+[node name="InventoryList" type="VBoxContainer" parent="Root/Window"]
+layout_mode = 1
+offset_top = 23.0
+offset_right = 200.0
+offset_bottom = 500.0
+
+[node name="Equipment" type="VBoxContainer" parent="Root/Window"]
+layout_mode = 0
+offset_left = 201.0
+offset_right = 242.0
+offset_bottom = 8.0
+
+[node name="WeaponSlot" type="Button" parent="Root/Window/Equipment"]
+layout_mode = 2

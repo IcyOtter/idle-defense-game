@@ -72,3 +72,4 @@ func take_damage(amount: int) -> void:
 
 func _on_died() -> void:
 	queue_free()
+	print("Enemy died -> queue_free:", name)

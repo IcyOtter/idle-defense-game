@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponItemData" load_steps=5 format=3 uid="uid://dukx3ir854im2"]
+
+[ext_resource type="Texture2D" uid="uid://6jqo58bx54vh" path="res://Assets/Weapons/Basic Bow/wepBasicBow.png" id="1_jco34"]
+[ext_resource type="Script" uid="uid://2ymejao74t6q" path="res://Items/WeaponItemData.gd" id="1_qt015"]
+[ext_resource type="Resource" uid="uid://bgjc41dqx7qlm" path="res://Assets/Weapons/Basic Bow/wdBasicBow.tres" id="3_8111q"]
+[ext_resource type="PackedScene" uid="uid://bbh8ja5kplm76" path="res://Assets/Weapons/Basic Bow/BasicBow.tscn" id="4_b45iw"]
+
+[resource]
+script = ExtResource("1_qt015")
+weapon_scene = ExtResource("4_b45iw")
+weapon_data = ExtResource("3_8111q")
+id = &"Basic_Bow"
+display_name = "Basic Bow"
+icon = ExtResource("1_jco34")
+description = "A simple bow"
+metadata/_custom_type_script = "uid://2ymejao74t6q"

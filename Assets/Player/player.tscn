@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://bj56idca2yvmg" path="res://Scripts/Player/Player.gd" id="1_5j20w"]
 [ext_resource type="Script" uid="uid://blmciaa5ipojl" path="res://Scripts/Player/PlayerCombat.gd" id="1_8ft5u"]
 [ext_resource type="Texture2D" uid="uid://bkx73bx7m1xnb" path="res://Assets/Player/pixelplayer.png" id="1_61lih"]
-[ext_resource type="PackedScene" uid="uid://bbh8ja5kplm76" path="res://Assets/Weapons/Basic Bow/BasicBow.tscn" id="2_5jfoa"]
 [ext_resource type="Script" uid="uid://tedg5l22oe0b" path="res://Scripts/Player/PlayerHealth.gd" id="5_aqk3a"]
+[ext_resource type="Script" uid="uid://bfd81gbr227ra" path="res://Scripts/Player/PlayerEquipmentController.gd" id="6_aqk3a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqk3a"]
 radius = 17.0
@@ -30,12 +30,9 @@ texture = ExtResource("1_61lih")
 
 [node name="PlayerCombat" type="Node2D" parent="." node_paths=PackedStringArray("weapon", "targeting_area", "player")]
 script = ExtResource("1_8ft5u")
-weapon = NodePath("../BasicBow")
+weapon = NodePath("")
 targeting_area = NodePath("../TargetingArea")
 player = NodePath("..")
-
-[node name="BasicBow" parent="." instance=ExtResource("2_5jfoa")]
-position = Vector2(26, 0)
 
 [node name="TargetingArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -56,3 +53,11 @@ shape = SubResource("CapsuleShape2D_8ft5u")
 [node name="PlayerHealth" type="Node" parent="."]
 script = ExtResource("5_aqk3a")
 max_health = 10
+
+[node name="WeaponMount" type="Node2D" parent="."]
+
+[node name="PlayerEquipmentController" type="Node" parent="." node_paths=PackedStringArray("weapon_mount", "player_combat")]
+script = ExtResource("6_aqk3a")
+weapon_mount = NodePath("../WeaponMount")
+player_combat = NodePath("../PlayerCombat")
+metadata/_custom_type_script = "uid://bfd81gbr227ra"

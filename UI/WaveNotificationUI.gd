@@ -15,13 +15,20 @@ func _ready() -> void:
 		push_warning("WaveNotificationUI: spawner not assigned.")
 		return
 
-	# Subscribe to wave cleared
-	spawner.wave_finished.connect(_on_wave_finished)
+	var cb := Callable(self, "_on_wave_cleared")
 
-func _on_wave_finished(wave_index: int) -> void:
-	# wave_index is 0-based; display as 1-based
+	if spawner.has_signal("wave_cleared") and not spawner.is_connected("wave_cleared", cb):
+		spawner.connect("wave_cleared", cb)
+
+
+
+
+func _on_wave_cleared(wave_index: int) -> void:
+	print("UI RECEIVED wave_cleared:", wave_index)
 	message.text = "Wave %d cleared!" % (wave_index + 1)
 	message.visible = true
+	_hide_timer = get_tree().create_timer(display_seconds)
+	_hide_timer.timeout.connect(_hide_message)
 
 	# Cancel any prior timer by simply starting a new one
 	if _hide_timer != null:

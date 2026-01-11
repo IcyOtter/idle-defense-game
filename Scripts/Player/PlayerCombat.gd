@@ -34,16 +34,17 @@ func _input(event: InputEvent) -> void:
 	if player == null or player.is_dead:
 		return
 
+	if weapon == null:
+		return
+
 	if event.is_action_pressed("attack"):
 		var target := _get_nearest_enemy()
 		if target:
-			if weapon is BowWeapon:
-				(weapon as BowWeapon).fire_at_target(target)
-			else:
-				weapon.fire(target.global_position)
+			weapon.fire(target.global_position)
 
 	if event.is_action_pressed("toggle_auto_fire"):
 		auto_fire = not auto_fire
+
 
 
 func _get_nearest_enemy() -> Node2D:
