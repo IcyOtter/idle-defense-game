@@ -5,13 +5,18 @@ class_name InventoryUI
 
 @onready var list: VBoxContainer = $Root/Window/InventoryList
 @onready var weapon_slot: Button = $Root/Window/Equipment/WeaponSlot
+@onready var window: Control = $Root/Window
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED  # so it can close itself after pausing
+	window.visible = false                        # start closed
+
 	AL_InventoryManager.inventory_changed.connect(_refresh)
 	AL_InventoryManager.equipment_changed.connect(_refresh)
 
-	_refresh()
 	weapon_slot.pressed.connect(_on_weapon_slot_pressed)
+	_refresh()
+
 
 func _refresh() -> void:
 	# Clear list
@@ -54,3 +59,13 @@ func _on_row_pressed(index: int) -> void:
 
 func _on_weapon_slot_pressed() -> void:
 	AL_InventoryManager.unequip_weapon_to_inventory()
+
+func toggle() -> void:
+	var opening := not window.visible
+
+	if opening:
+		window.visible = true
+		get_tree().paused = true
+	else:
+		get_tree().paused = false
+		window.visible = false

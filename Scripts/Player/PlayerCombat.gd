@@ -13,6 +13,10 @@ func _ready() -> void:
 	targeting_area.body_exited.connect(_on_enemy_exited)
 
 func _process(_delta: float) -> void:
+
+	if get_tree().paused:
+		return
+
 	if player == null or player.is_dead:
 		return
 	if weapon == null:
@@ -31,6 +35,9 @@ func _process(_delta: float) -> void:
 			weapon.fire(target.global_position)
 
 func _input(event: InputEvent) -> void:
+	if get_tree().paused:
+		return
+
 	if player == null or player.is_dead:
 		return
 

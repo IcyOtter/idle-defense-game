@@ -20,6 +20,7 @@ var _wave_spawn_complete: bool = false
 var _tracked_ids: Dictionary = {} # instance_id -> true
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	_rng.randomize()
 	if spawn_parent == null:
 		spawn_parent = get_tree().current_scene
@@ -65,7 +66,7 @@ func _run_wave(wave_index: int) -> void:
 	_tracked_ids.clear()
 
 	if wave.start_delay > 0.0:
-		await get_tree().create_timer(wave.start_delay).timeout
+		await get_tree().create_timer(wave.start_delay, false).timeout
 
 	# Build spawn queue
 	var queue: Array[PackedScene] = []
@@ -86,7 +87,7 @@ func _run_wave(wave_index: int) -> void:
 			return
 		_spawn_enemy(enemy_scene, wave_index)
 		if wave.spawn_interval > 0.0:
-			await get_tree().create_timer(wave.spawn_interval).timeout
+			await get_tree().create_timer(wave.spawn_interval, false).timeout
 
 	_wave_spawn_complete = true
 	print("Wave", wave_index, "spawn complete. Alive:", _alive_in_wave)
@@ -102,7 +103,7 @@ func _run_wave(wave_index: int) -> void:
 	emit_signal("wave_finished", wave_index)
 
 	if wave.end_delay > 0.0:
-		await get_tree().create_timer(wave.end_delay).timeout
+		await get_tree().create_timer(wave.end_delay, false).timeout
 
 func _spawn_enemy(enemy_scene: PackedScene, wave_index: int) -> void:
 	var enemy := enemy_scene.instantiate()

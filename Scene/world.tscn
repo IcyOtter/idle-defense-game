@@ -25,6 +25,11 @@ script = ExtResource("1_ol2hl")
 [node name="WaveNotificationUI" parent="." node_paths=PackedStringArray("spawner") instance=ExtResource("5_37axr")]
 spawner = NodePath("../EnemySpawner")
 
+[node name="PlayerUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_pcvp0")]
+player = NodePath("../Player")
+
+[node name="InventoryUI" parent="." instance=ExtResource("6_37axr")]
+
 [node name="Terrain" type="Node2D" parent="."]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Terrain"]
@@ -35,8 +40,9 @@ tile_set = SubResource("TileSet_ejll3")
 position = Vector2(21, 316)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_scul4")]
+process_mode = 1
 
-[node name="PlayerUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_pcvp0")]
-player = NodePath("../Player")
-
-[node name="InventoryUI" parent="." instance=ExtResource("6_37axr")]
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("inventory_ui")]
+process_mode = 3
+script = ExtResource("1_ol2hl")
+inventory_ui = NodePath("../InventoryUI")

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c1xmaw0uhlifq" path="res://Inventory/InventoryRow.tscn" id="2_jgibs"]
 
 [node name="InventoryUI" type="CanvasLayer"]
+process_mode = 2
 script = ExtResource("1_jgibs")
 row_scene = ExtResource("2_jgibs")
 

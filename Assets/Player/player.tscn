@@ -28,9 +28,8 @@ shape = SubResource("CapsuleShape2D_aqk3a")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_61lih")
 
-[node name="PlayerCombat" type="Node2D" parent="." node_paths=PackedStringArray("weapon", "targeting_area", "player")]
+[node name="PlayerCombat" type="Node2D" parent="." node_paths=PackedStringArray("targeting_area", "player")]
 script = ExtResource("1_8ft5u")
-weapon = NodePath("")
 targeting_area = NodePath("../TargetingArea")
 player = NodePath("..")
 
@@ -55,6 +54,7 @@ script = ExtResource("5_aqk3a")
 max_health = 10
 
 [node name="WeaponMount" type="Node2D" parent="."]
+position = Vector2(29, 8)
 
 [node name="PlayerEquipmentController" type="Node" parent="." node_paths=PackedStringArray("weapon_mount", "player_combat")]
 script = ExtResource("6_aqk3a")
