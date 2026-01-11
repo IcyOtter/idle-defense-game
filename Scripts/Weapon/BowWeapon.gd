@@ -4,10 +4,19 @@ class_name BowWeapon
 @export var fire_point: Node2D
 
 var _last_target: Node2D = null
+var _use_homing_for_this_shot: bool = false
 
 func fire_at_target(target: Node2D) -> void:
+	if target == null or not is_instance_valid(target):
+		return
 	_last_target = target
+	_use_homing_for_this_shot = true
 	fire(target.global_position)
+
+func fire_at_position(world_pos: Vector2) -> void:
+	_last_target = null
+	_use_homing_for_this_shot = false
+	fire(world_pos)
 
 func _spawn_projectile(target_position: Vector2) -> void:
 	if weapon_data == null or weapon_data.projectile_scene == null:
@@ -21,10 +30,11 @@ func _spawn_projectile(target_position: Vector2) -> void:
 	get_tree().current_scene.add_child(projectile)
 
 	var direction := (target_position - fire_point.global_position).normalized()
+	if direction == Vector2.ZERO:
+		direction = Vector2.RIGHT
 
-	# IMPORTANT: only pass a live Node2D
 	var target_node: Node2D = null
-	if _last_target != null and is_instance_valid(_last_target):
+	if _use_homing_for_this_shot and _last_target != null and is_instance_valid(_last_target):
 		target_node = _last_target
 
 	projectile.initialize(
@@ -33,8 +43,10 @@ func _spawn_projectile(target_position: Vector2) -> void:
 		weapon_data.projectile_lifetime,
 		direction,
 		target_node,
-		weapon_data.homing_enabled,
+		_use_homing_for_this_shot,
 		weapon_data.turn_rate_rad
 	)
 
 	_last_target = null
+	_use_homing_for_this_shot = false
+
