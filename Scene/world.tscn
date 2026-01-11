@@ -39,10 +39,9 @@ tile_set = SubResource("TileSet_ejll3")
 [node name="Player" parent="." instance=ExtResource("3_ejll3")]
 position = Vector2(21, 316)
 
-[node name="EnemySpawner" parent="." instance=ExtResource("3_scul4")]
-process_mode = 1
-
 [node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("inventory_ui")]
 process_mode = 3
 script = ExtResource("1_ol2hl")
 inventory_ui = NodePath("../InventoryUI")
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_scul4")]
